@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Taly SDK</string>
+    <string name="amount">Amount</string>
+    <string name="enter_amount">Please enter amount</string>
+    <string name="banner_view">Product page banner :-</string>
+    <string name="payment_option_view">Payment option view</string>
+    <string name="split_payment_with_taly">Split payment with Taly</string>
+    <string name="proceed">Proceed</string>
+    <string name="custom_payment_option_view">Custom Payment option view</string>
+</resources>
