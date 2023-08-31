@@ -6,40 +6,40 @@ Taly is a Buy Now, Pay Later provider that allows you to split your payments int
 
 1. Place the taly-sdk-release.aar File in Your Project:
 
-    * Copy the .aar library file into the **libs** directory of your Android project. If the **libs** directory doesn't exist, you can create it in the **app** module of your project.
+   * Copy the .aar library file into the **libs** directory of your Android project. If the **libs** directory doesn't exist, you can create it in the **app** module of your project.
 
 
 2. Add Dependencies in Your Project's build.gradle:
 
-    * Open the **build.gradle** file of your app module.
-    * Inside the **dependencies** block, add the following line:
-        ```
-        dependencies {
-            ...
-            implementation files('libs/taly-sdk-release.aar')
-        }
-        ```
+   * Open the **build.gradle** file of your app module.
+   * Inside the **dependencies** block, add the following line:
+       ```
+       dependencies {
+           ...
+           implementation files('libs/taly-sdk-release.aar')
+       }
+       ```
 
 3. Required libraries:
-    * Add library required by SDK
-        ```
-        dependencies {
-            ...
-            implementation 'com.mixpanel.android:mixpanel-android:7.+'
+   * Add library required by SDK
+       ```
+       dependencies {
+           ...
+           implementation 'com.mixpanel.android:mixpanel-android:7.+'
 
-            def retrofit = '2.9.0'
-            implementation "com.squareup.retrofit2:retrofit:$retrofit"
-            implementation "com.squareup.retrofit2:converter-gson:$retrofit"
-            implementation "com.squareup.retrofit2:converter-jackson:$retrofit"
-            
-            implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
-            implementation("com.squareup.okhttp3:okhttp")
-            implementation("com.squareup.okhttp3:logging-interceptor")
-        }
-        ```
+           def retrofit = '2.9.0'
+           implementation "com.squareup.retrofit2:retrofit:$retrofit"
+           implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+           implementation "com.squareup.retrofit2:converter-jackson:$retrofit"
+           
+           implementation(platform("com.squareup.okhttp3:okhttp-bom:4.10.0"))
+           implementation("com.squareup.okhttp3:okhttp")
+           implementation("com.squareup.okhttp3:logging-interceptor")
+       }
+       ```
 
 4. Sync Gradle:
-    * After adding the dependency, sync your project with Gradle.
+   * After adding the dependency, sync your project with Gradle.
 
 ## Usage
 
@@ -54,11 +54,11 @@ The example app serves as a simple online shopping application that highlights t
 
 1. Create a new class named **MyApplication** that extends **Application** if you don't already have one.
 
-    Begin by initializing the Taly SDK with the necessary credentials. You'll need the following information:
+   Begin by initializing the Taly SDK with the necessary credentials. You'll need the following information:
 
-    * **Username**: Your username for authentication.
-    * **Password**: Your password for authentication.
-    * **Environment**: Choose between Environment.Development for development and testing, or Environment.Production for the live app.
+   * **Username**: Your username for authentication.
+   * **Password**: Your password for authentication.
+   * **Environment**: Choose between Environment.Development for development and testing, or Environment.Production for the live app.
 
     ```
     TalySdk.INSTANCE.initialize(
@@ -70,11 +70,11 @@ The example app serves as a simple online shopping application that highlights t
         
     TalySdk.INSTANCE.setLogLevel(io.taly.sdk.utils.logs.LogLevel.VERBOSE); // set log level for debugging.
     ```
-    Add above initialization code in your Application class.
+   Add above initialization code in your Application class.
 
 2. Add MyApplication in AndroidManifest.xml
 
-    In your **AndroidManifest.xml**, specify the custom **MyApplication** class as the application:
+   In your **AndroidManifest.xml**, specify the custom **MyApplication** class as the application:
 
     ```
     <application
@@ -96,7 +96,7 @@ Implement the TalySdkController in Your Activity or Fragment.
 
 2. Create an instance of **InitiatePaymentModel**
 
-    [Checkout the Initiate payment model in details](InitiatePaymentModelReadme.md)
+   [Checkout the Initiate payment model in details](InitiatePaymentModelReadme.md)
 
     ```
     // Replace the following lines with your actual InitiatePaymentModel data
@@ -131,6 +131,7 @@ Implement the TalySdkController in Your Activity or Fragment.
     customerDetails.setFirstName("Ahmaa");
     customerDetails.setLastName("Ali");
     customerDetails.setGender("Male");
+    customerDetails.setCountryCode("+965");
     customerDetails.setPhoneNumber("55555333");
     customerDetails.setCustomerEmail("user@example.com");
     customerDetails.setRegisteredSince("2022-10-26");
@@ -166,10 +167,10 @@ Implement the TalySdkController in Your Activity or Fragment.
     initiatePaymentModel.setPostBackUrl("https://yourmerchant.com/yourWebwebhookEndpoint/");
     initiatePaymentModel.setMerchantLogo("https://www.yourmerchant.com/media/merchantLogo.png");
     ```
-    
+
 3. Pass the instance of **InitiatePaymentModel** in **TalySdkController**
 
-    Whenever you want to initiate the order request, call the **initiateTalyPay()** method, and it will trigger the TalySDK to process the order with the provided **InitiatePaymentModel** data.
+   Whenever you want to initiate the order request, call the **initiateTalyPay()** method, and it will trigger the TalySDK to process the order with the provided **InitiatePaymentModel** data.
 
     ```
     talySdkController.initiatePayment(
@@ -214,21 +215,21 @@ Note :- Implement callback before **initiatePayment**.
 
 1. You can customize the color of the TalySDK progress bar according to your app's design:
 
-    * Change Progress Bar Color: To change the color of the progress bar, use the setPrimaryColor method of the TalySdk:
+   * Change Progress Bar Color: To change the color of the progress bar, use the setPrimaryColor method of the TalySdk:
 
-        ```
-        TalySdk.INSTANCE.setPrimaryColor(R.color.yourColor); // Replace 'yourColor' with the desired color resource
-        ```
+       ```
+       TalySdk.INSTANCE.setPrimaryColor(R.color.yourColor); // Replace 'yourColor' with the desired color resource
+       ```
 
 2. You can enable language selection for your users to choose between English and Arabic. First, ensure that your application supports both languages.
 
-    * Use the setLanguageCode property to change the language (By default the SDK language is in English).
-        ```
-        String selectedLanguage = "en" // Replace "en" with the selected language ("en" or "ar")
-        TalySdk.INSTANCE.setLanguageCode(selectedLanguage); 
-        ```
+   * Use the setLanguageCode property to change the language (By default the SDK language is in English).
+       ```
+       String selectedLanguage = "en" // Replace "en" with the selected language ("en" or "ar")
+       TalySdk.INSTANCE.setLanguageCode(selectedLanguage); 
+       ```
 
-## Banner View by Taly 
+## Banner View by Taly
 
 Integrate the Banner view into your Product Detail screen to offer users a comprehensive, step-by-step guide on utilizing the Taly Payment System. This feature will also visually present the product amount divided into four manageable installments.
 
@@ -284,13 +285,13 @@ It can be used to display a custom banner.
         currency,
         new CustomSDKCallback<InstallmentModel>() {
             @Override
-            public void onSuccess(InstallmentModel installmentModel) {
-                Log.d(ContentValues.TAG, "BannerResponse: $response");
+            public void onSuccess(InstallmentModel response) {
+                //handle success response
             }
 
             @Override
-            public void onFailure(@NonNull Object o) {
-                Log.d(ContentValues.TAG, "BannerResponse: $errorMessage");
+            public void onFailure(@NonNull Object errorMessage) {
+                // handle failure response
             }
         });
 ```

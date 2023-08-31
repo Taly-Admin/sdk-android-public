@@ -47,7 +47,7 @@ Parameters with **`*`** are the mandatory fields to be filled.
 **merchantLogo** : Optional (Data type: string): URL of the sub-merchant logo (max 256 characters) logo dimension must be 250px x 250px - Limited to 255 characters.
 
 
-**PSP** : 
+**PSP** :
 
 * **isPspOrder** : Optional (Data type: boolean): required Only applicable for B2B merchants / by default false.
 
@@ -89,7 +89,7 @@ Parameters with **`*`** are the mandatory fields to be filled.
 
 * **itemCategory** : Optional (Data type: string): The item's category path as used in the merchant's webshop. Include the full and most detailed category and separate the segments with ' > ' - Limited to 25 characters.
 
-**customerDetails`*`** : 
+**customerDetails`*`** :
 
 * **firstName** : Optional (Data type: string): default value is null - Limited to 100 characters.
 
@@ -97,12 +97,14 @@ Parameters with **`*`** are the mandatory fields to be filled.
 
 * **gender** : Optional (Data type: string): default value is null - Limited to 7 characters.
 
+* **countryCode** : Optional (Data type: string) - must be sent separated from the customer's phone number.
+
 * **phoneNumber** : Optional (Data type: string) - Limited to 12 characters.
 
 * **customerEmail** : Optional (Data type: string): default value is null - Limited to 100 characters.
 
 * **registeredSince** : Optional (Data type: string): time the customer account created in your website in UTC in iso 8601 date/time  default value is null.
-Date Format :- yyyy-mm-dd
+  Date Format :- yyyy-mm-dd
 
 * **loyaltyMember** : Optional (Data type: boolean): default null.
 
@@ -132,6 +134,7 @@ Date Format :- yyyy-mm-dd
         "loyaltyLevel": null,
         "loyaltyMember": false,
         "phoneNumber": null,
+        "countryCode": null,
         "registeredSince": null
       },
       "deliveryAddress": {

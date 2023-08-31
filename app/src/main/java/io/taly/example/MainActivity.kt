@@ -217,6 +217,7 @@ class MainActivity : AppCompatActivity(), BannerView.OnInfoClick {
                 firstName = "Ahmaa",
                 lastName = "Ali",
                 gender = "Male",
+                countryCode = "965",
                 phoneNumber = "55555333",
                 customerEmail = "user@example.com",
                 registeredSince = "2022-10-26",

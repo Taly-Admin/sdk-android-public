@@ -145,6 +145,7 @@ Implement the TalySdkController in Your Activity or Fragment.
         firstName = "Ahmaa",
         lastName = "Ali",
         gender = "Male",
+        countryCode = "+965"
         phoneNumber = "55555333",
         customerEmail = "user@example.com",
         registeredSince = "2022-10-26",
@@ -161,7 +162,7 @@ Implement the TalySdkController in Your Activity or Fragment.
     )
 
     val initiatePaymentModel = InitiatePaymentModel(
-            merchantOrderId = System.currentTimeMillis().toString(),
+        merchantOrderId = System.currentTimeMillis().toString(),
         language = "en",
         merchantBranch = "salmiya",
         subtotal = 1.000,
@@ -302,7 +303,7 @@ It can be used to display a custom banner.
                 }
 
                 override fun onFailure(errorMessage: Any) {
-                    // handle failyre response
+                    // handle failure response
                 }
             })
 ```
